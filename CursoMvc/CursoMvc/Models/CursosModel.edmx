@@ -20,6 +20,7 @@
           <Property Name="Id_Estado" Type="int" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Edad" Type="int" />
         </EntityType>
         <Association Name="FK_Usuarios_Estados">
           <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
@@ -69,6 +70,7 @@
           <Property Name="Id_Estado" Type="Int32" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Edad" Type="Int32" />
           <NavigationProperty Name="Estados" Relationship="CursosDbModel.FK_Usuarios_Estados" FromRole="Usuarios" ToRole="Estados" />
         </EntityType>
         <Association Name="FK_Usuarios_Estados">
@@ -100,6 +102,7 @@
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="CursosDbModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />

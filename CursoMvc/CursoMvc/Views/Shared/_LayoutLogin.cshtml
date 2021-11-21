@@ -18,13 +18,6 @@
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Usuarios", "Index", "User")</li>
-                    <li>@Html.ActionLink("Cerrar Sesion", "Logoff", "Access")</li>
-                </ul>
-            </div>
         </div>
     </div>
     <div class="container body-content">
@@ -40,3 +33,4 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+

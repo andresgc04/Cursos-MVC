@@ -18,6 +18,7 @@ namespace CursoMvc.Models
         public Nullable<int> Id_Estado { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public Nullable<int> Edad { get; set; }
     
         public virtual Estados Estados { get; set; }
     }
