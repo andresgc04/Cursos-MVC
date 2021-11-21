@@ -60,5 +60,57 @@ namespace CursoMvc.Controllers
 
             return Redirect(Url.Content("~/User/"));
         }
+
+        public ActionResult Edit(int Id)
+        {
+            EditUserViewModel model = new EditUserViewModel();
+
+            using (var db = new CursosDbEntities())
+            {
+                var usuarioObj = db.Usuarios.Find(Id);
+                model.Edad = (int)usuarioObj.Edad;
+                model.Email = usuarioObj.Email;
+                model.Id_Usuario = usuarioObj.Id_Usuario;
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EditUserViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            using (var db = new CursosDbEntities())
+            {
+                var usuarioObj = db.Usuarios.Find(model.Id_Usuario);
+                usuarioObj.Email = model.Email;
+                usuarioObj.Edad = model.Edad;
+
+                if (model.Password != null && model.Password.Trim() != "")
+                    usuarioObj.Password = model.Password;
+
+                db.Entry(usuarioObj).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return Redirect(Url.Content("~/User/"));
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int Id)
+        {
+            using (var db = new CursosDbEntities())
+            {
+                var usuarioObj = db.Usuarios.Find(Id);
+                usuarioObj.Id_Estado = 3; //Eliminar
+
+                db.Entry(usuarioObj).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return Content("1");
+        }
     }
 }
